@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interview Questions: Palo Alto Firewall</title>
+    <title>أسئلة انترفيو Palo Alto Firewall</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #fa4616; /* Palo Alto Orange */
@@ -14,6 +15,9 @@
             --easy: #2e7d32;
             --medium: #ef6c00;
             --hard: #c62828;
+            --linkedin: #0077b5;
+            --github: #333;
+            --youtube: #ff0000;
         }
 
         body {
@@ -33,7 +37,6 @@
         header h1 { color: var(--primary); font-size: 2rem; margin-bottom: 5px; }
         header p { color: var(--subtext); }
 
-        /* Tabs & Search */
         .controls {
             max-width: 900px;
             margin: 0 auto 30px auto;
@@ -70,16 +73,16 @@
 
         #searchInput {
             width: 100%;
-            padding: 12px;
+            padding: 15px;
             border-radius: 8px;
             border: 1px solid #444;
             background: #222;
             color: white;
             box-sizing: border-box;
             text-align: center;
+            font-size: 1rem;
         }
 
-        /* Question Cards */
         .container { max-width: 900px; margin: 0 auto; }
         .level-section { display: none; }
         .level-section.active { display: block; }
@@ -91,7 +94,7 @@
             border-radius: 10px;
             border-right: 4px solid var(--primary);
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            transition: transform 0.2s;
+            transition: 0.2s;
         }
 
         .card:hover { transform: translateY(-2px); }
@@ -113,6 +116,7 @@
             display: none;
             color: #ddd;
             border-right: 2px solid #444;
+            white-space: pre-line;
         }
 
         .answer.show { display: block; animation: slideDown 0.3s ease-out; }
@@ -131,11 +135,44 @@
             text-align: left;
         }
 
-        ul { padding-right: 20px; }
-        li { margin-bottom: 5px; }
+        footer {
+            margin-top: 50px;
+            padding: 40px 10px;
+            text-align: center;
+            border-top: 1px solid #333;
+            background: #151515;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            text-decoration: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .linkedin { background: var(--linkedin); }
+        .github { background: var(--github); border: 1px solid #444; }
+        .youtube { background: var(--youtube); }
+
+        .social-btn:hover { transform: scale(1.05); filter: brightness(1.1); }
 
         @media (max-width: 600px) {
-            .tab-btn { font-size: 0.8rem; padding: 10px 5px; }
+            .tab-btn { font-size: 0.8rem; }
+            .social-btn { width: 90%; justify-content: center; }
         }
     </style>
 </head>
@@ -143,7 +180,7 @@
 
 <header>
     <h1>Palo Alto Interview Prep</h1>
-    <p>40 Questions to Master Your Interview</p>
+    <p>بص يا حبيبي علشان بحبك جبتلك أهم 40 سؤال (سهل، متوسط، صعب)</p>
 </header>
 
 <div class="controls">
@@ -152,119 +189,118 @@
         <button class="tab-btn" data-level="medium">المستوى الثاني</button>
         <button class="tab-btn" data-level="hard">المستوى الثالث</button>
     </div>
-    <input type="text" id="searchInput" placeholder="ابحث عن سؤال... (مثلاً: NAT أو HA)">
+    <input type="text" id="searchInput" placeholder="ابحث عن سؤال أو كلمة مفتاحية...">
 </div>
 
 <div class="container">
     <section id="easy" class="level-section active">
         <div class="card">
             <div class="question" onclick="toggle(this)">1) ما هو Palo Alto Firewall؟ <span>+</span></div>
-            <div class="answer">هو Next Generation Firewall (NGFW) من شركة Palo Alto Networks. بيقدم تحكم مش بس على مستوى الـ IP والـ Port، لكن كمان على مستوى التطبيق (App) والمستخدم (User) والمحتوى (Content).</div>
+            <div class="answer">هو Next Generation Firewall (NGFW) من شركة Palo Alto Networks، بيقدم تحكم مش بس على مستوى الـ IP والـ Port، لكن كمان على مستوى التطبيق (App) والمستخدم (User) والمحتوى (Content).</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">2) الفرق بين Traditional Firewall و NGFW؟ <span>+</span></div>
-            <div class="answer">
-                <b>Traditional:</b> بيشتغل Layer 3/4، بيعتمد على Port/IP، حماية محدودة.<br>
-                <b>NGFW:</b> بيشتغل Layer 7، بيعتمد على Application، يدعم User-ID، ويوفر (IPS + URL + AV + App Control).
-            </div>
+            <div class="answer"><b>Traditional:</b> بيشتغل Layer 3/4، بيعتمد على Port/IP، حماية محدودة ولا يوجد User Awareness.
+<b>NGFW:</b> بيشتغل Layer 7، بيعتمد على Application، يدعم User-ID، ويوفر (IPS + URL + AV + App Control).</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">3) مكونات Palo Alto الأساسية؟ <span>+</span></div>
-            <div class="answer">
-                <ul>
-                    <li>App-ID / User-ID / Content-ID</li>
-                    <li>Security Policies / NAT Policies</li>
-                    <li>Security Profiles</li>
-                </ul>
-            </div>
+            <div class="answer">● App-ID
+● User-ID
+● Content-ID
+● Security Policies
+● NAT Policies
+● Security Profiles</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">4) ما هي الـ Security Zones؟ <span>+</span></div>
-            <div class="answer">تقسيم منطقي للشبكة مثل (Trust – Untrust – DMZ). السياسات في بالو ألتو تُطبق دائماً بين Zones وليس Interfaces.</div>
+            <div class="answer">تقسيم منطقي للشبكة (Trust - Untrust - DMZ). السياسات بتطبق بين Zone و Zone مش Interface و Interface.</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">5) الفرق بين Security Policy و NAT Policy؟ <span>+</span></div>
-            <div class="answer">
-                <b>Security Policy:</b> وظيفتها السماح أو المنع (Allow/Deny) للترافيك.<br>
-                <b>NAT Policy:</b> وظيفتها تعديل الـ Source أو Destination IP فقط.
-            </div>
+            <div class="answer">● Security Policy: تسمح أو تمنع الترافيك.
+● NAT Policy: تعدل الـ Source أو Destination IP.</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">6) الفرق بين Source NAT و Destination NAT؟ <span>+</span></div>
-            <div class="answer">
-                <b>SNAT:</b> تغيير الـ Source IP (غالباً عند خروج المستخدمين للإنترنت).<br>
-                <b>DNAT:</b> تغيير الـ Destination IP (Port Forwarding للسيرفرات الداخلية).
-            </div>
+            <div class="answer">● SNAT: تغيير Source IP (غالباً خروج إنترنت).
+● DNAT: تغيير Destination IP (مثل Port Forwarding).</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">7) Static NAT vs Dynamic NAT؟ <span>+</span></div>
-            <div class="answer">
-                <b>Static:</b> حجز IP مقابل IP (ثابت 1:1).<br>
-                <b>Dynamic:</b> الجهاز بيختار IP متغير من الـ Pool المتاح.
-            </div>
+            <div class="answer">● Static: IP مقابل IP ثابت (1:1).
+● Dynamic: الـ IP بيتغير من Pool.</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">8) ما هو الـ App-ID؟ <span>+</span></div>
-            <div class="answer">تقنية بتتعرف على التطبيق الحقيقي حتى لو غير الـ Port بتاعه (مثال: Facebook شغال على Port 443، الفايروول بيفهم إنه فيسبوك مش مجرد ترافيك ويب عادي).</div>
+            <div class="answer">تقنية بتتعرف على التطبيق الحقيقي حتى لو غير الـ Port (مثال: Facebook على Port 443).</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">9) ما هو الـ User-ID؟ <span>+</span></div>
-            <div class="answer">بيربط الـ IP بالـ User من الـ Active Directory علشان تقدر تكتب Policy باسم المستخدم بدل ما تستخدم IP.</div>
+            <div class="answer">يربط الـ IP بالـ User من الـ Active Directory علشان تكتب Policy بالمستخدم مش بالـ IP.</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">10) ما هو الـ Content-ID؟ <span>+</span></div>
-            <div class="answer">بيفحص محتوى الـ Packet للبحث عن (Virus, Spyware, URL, File Blocking).</div>
+            <div class="answer">يفحص المحتوى (Virus, Spyware, URL, File Blocking).</div>
         </div>
     </section>
 
     <section id="medium" class="level-section">
         <div class="card">
             <div class="question" onclick="toggle(this)">11) Layer 2 Mode vs Layer 3 Mode؟ <span>+</span></div>
-            <div class="answer"><b>L3:</b> وضع الـ Routing العادي (الأكثر استخداماً). <br><b>L2:</b> وضع الـ Switching بدون Routing.</div>
+            <div class="answer">● L3: وضع الـ Routing العادي (الأكثر استخداماً).
+● L2: وضع الـ Switching بدون Routing.</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">12) Virtual Wire (V-Wire)؟ <span>+</span></div>
-            <div class="answer">بيشتغل Inline بين جهازين بدون تغيير الـ IP. مفيد جداً في بيئة Production قديمة كحل شفاف (Transparent).</div>
+            <div class="answer">بيشتغل Inline بين جهازين بدون تغيير IP — مفيد في بيئة Production قديمة.</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">13) Tap Mode؟ <span>+</span></div>
-            <div class="answer">للمراقبة فقط (Monitoring) بدون أي تدخل في الترافيك أو منعه.</div>
+            <div class="answer">للمراقبة فقط (Monitoring) بدون تدخل في الترافيك.</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">14) Virtual Router vs Routing Table؟ <span>+</span></div>
-            <div class="answer"><b>Virtual Router:</b> كيان منطقي بيعمل Routing داخل الفايروول.<br><b>Routing Table:</b> هو جدول المسارات الفعلي داخل هذا الـ VR.</div>
+            <div class="answer">● Virtual Router: كيان منطقي يعمل Routing.
+● Routing Table: جدول المسارات داخل الـ VR.</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">15) ما هي الـ Security Profiles؟ <span>+</span></div>
-            <div class="answer">هي أدوات الفحص مثل: Antivirus, Anti-Spyware, Vulnerability Protection, URL Filtering, File Blocking.</div>
+            <div class="answer">تشمل أدوات الحماية مثل: Antivirus, Anti-Spyware, Vulnerability Protection, URL Filtering, File Blocking.</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">16) ما هو WildFire؟ <span>+</span></div>
-            <div class="answer">خدمة Cloud من Palo Alto لتحليل الملفات المشبوهة والجديدة (Zero-day) في بيئة معزولة (Sandbox).</div>
+            <div class="answer">خدمة Cloud من Palo Alto Networks بتحلل الملفات المشبوهة في Sandbox.</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">17) Application Default vs Any؟ <span>+</span></div>
-            <div class="answer"><b>App Default:</b> بيسمح للتطبيق فقط على البورت الأصلي بتاعه (أكثر أماناً). <br><b>Any:</b> بيسمح للتطبيق على أي بورت (أقل أماناً).</div>
+            <div class="answer">● Application Default: يسمح للتطبيق على البورت الأصلي فقط.
+● Any: يسمح على أي بورت (أقل أماناً).</div>
         </div>
         <div class="card">
-            <div class="question" onclick="toggle(this)">18) Service Object؟ <span>+</span></div>
-            <div class="answer">تحديد بورت معين مثل (TCP: 80).</div>
+            <div class="question" onclick="toggle(this)">18) ما هو الـ Service Object؟ <span>+</span></div>
+            <div class="answer">تحديد Port معين (مثال: TCP 80).</div>
         </div>
         <div class="card">
-            <div class="question" onclick="toggle(this)">19) Session Table؟ <span>+</span></div>
-            <div class="answer">جدول فيه كل الـ Sessions النشطة حالياً داخل الفايروول.</div>
+            <div class="question" onclick="toggle(this)">19) ما هي الـ Session Table؟ <span>+</span></div>
+            <div class="answer">جدول فيه كل الـ Sessions النشطة داخل الفايروول.</div>
         </div>
         <div class="card">
-            <div class="question" onclick="toggle(this)">20) ترتيب معالجة الـ Packet داخل الفايروول؟ <span>+</span></div>
-            <div class="answer">1. Zone Check -> 2. NAT Policy -> 3. Security Policy -> 4. Security Profiles -> 5. Forwarding.</div>
+            <div class="question" onclick="toggle(this)">20) ترتيب معالجة الـ Packet داخل Palo Alto؟ <span>+</span></div>
+            <div class="answer">1. Zone Check
+2. NAT Policy
+3. Security Policy
+4. Security Profiles
+5. Forwarding</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">21) ما هو SSL Decryption؟ <span>+</span></div>
-            <div class="answer">فك تشفير ترافيك الـ HTTPS علشان الفايروول يقدر يفحص المحتوى والملفات اللي جواه.</div>
+            <div class="answer">فك تشفير HTTPS علشان الفايروول يفحص المحتوى.</div>
         </div>
         <div class="card">
-            <div class="question" onclick="toggle(this)">22) SSL Forward Proxy vs Inbound Inspection؟ <span>+</span></div>
-            <div class="answer"><b>Forward Proxy:</b> لفحص خروج المستخدمين للإنترنت.<br><b>Inbound Inspection:</b> لفحص الترافيك الداخل للسيرفرات الخاصة بك.</div>
+            <div class="question" onclick="toggle(this)">22) SSL Forward Proxy vs SSL Inbound Inspection؟ <span>+</span></div>
+            <div class="answer">● Forward Proxy: لفحص خروج المستخدمين للإنترنت.
+● Inbound Inspection: لفحص الترافيك داخل السيرفرات.</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">23) DoS Protection؟ <span>+</span></div>
@@ -272,90 +308,112 @@
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">24) Zone Protection؟ <span>+</span></div>
-            <div class="answer">يحمي الـ Zone نفسها من (SYN Flood, Port Scan, ICMP Flood).</div>
+            <div class="answer">يحمي الـ Zone نفسها من: SYN Flood, Port Scan, ICMP Flood.</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">25) URL Filtering vs DNS Security؟ <span>+</span></div>
-            <div class="answer"><b>URL Filtering:</b> فلترة المواقع.<br><b>DNS Security:</b> يمنع الـ DNS-based attacks و C2 domains.</div>
+            <div class="answer">● URL Filtering: فلترة المواقع.
+● DNS Security: يمنع DNS-based attacks و C2 domains.</div>
         </div>
     </section>
 
     <section id="hard" class="level-section">
         <div class="card">
             <div class="question" onclick="toggle(this)">26) كيف يعمل الـ App-ID بالتفصيل؟ <span>+</span></div>
-            <div class="answer">Signature Matching, Protocol Decoding, Heuristic Analysis, SSL Decryption (لو مشفر). وبيقوم بعمل Re-evaluation للجلسة لو التطبيق اتغير.</div>
+            <div class="answer">● Signature Matching
+● Protocol Decoding
+● Heuristic Analysis
+● SSL Decryption (لو مشفر)
+بيعمل Re-evaluation للجلسة لو التطبيق اتغير.</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">27) Stateful Inspection vs Application Inspection؟ <span>+</span></div>
-            <div class="answer"><b>Stateful:</b> بيتابع حالة الاتصال (TCP Handshake).<br><b>Application:</b> بيفهم التطبيق نفسه في Layer 7.</div>
+            <div class="answer">● Stateful: يتابع حالة الاتصال (TCP Handshake).
+● Application: يفهم التطبيق نفسه في Layer 7.</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">28) كيف يتم إنشاء الـ Session؟ <span>+</span></div>
-            <div class="answer">أول Packet بتعمل Lookup في NAT و Security Policy، لو مسموح بيتم إنشاء Session وإضافتها للـ Table.</div>
+            <div class="answer">أول Packet → Lookup NAT → Match Security Policy → Create Session → Add to Session Table.</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">29) كيف يعمل الـ Threat Prevention؟ <span>+</span></div>
-            <div class="answer">بيفحص الترافيك باستخدام: IPS Signatures, Antivirus, Anti-Spyware, WildFire Integration.</div>
+            <div class="answer">يفحص الترافيك باستخدام:
+● IPS Signatures
+● Antivirus
+● Anti-Spyware
+● WildFire Integration</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">30) Security Profile vs Security Profile Group؟ <span>+</span></div>
-            <div class="answer"><b>Profile:</b> نوع حماية واحد (مثلاً AV فقط).<br><b>Group:</b> مجموعة Profiles متجمعة مع بعضها لتسهيل إضافتها للـ Policy.</div>
+            <div class="answer">● Profile: نوع حماية واحد.
+● Profile Group: مجموعة Profiles متجمعة.</div>
         </div>
         <div class="card">
-            <div class="question" onclick="toggle(this)">31) ما هو Panorama؟ <span>+</span></div>
-            <div class="answer">منصة إدارة مركزية من Palo Alto Networks لإدارة أكثر من Firewall في نفس الوقت.</div>
+            <div class="question" onclick="toggle(this)">31) ما هو الـ Panorama؟ <span>+</span></div>
+            <div class="answer">منصة إدارة مركزية من Palo Alto Networks لإدارة أكثر من Firewall.</div>
         </div>
         <div class="card">
-            <div class="question" onclick="toggle(this)">32) Device Group vs Template في بانوراما؟ <span>+</span></div>
-            <div class="answer"><b>Device Group:</b> للسياسات (Policies & Objects). <br><b>Template:</b> لإعدادات الشبكة والواجهات (Network & Interface Settings).</div>
+            <div class="question" onclick="toggle(this)">32) Device Group vs Template؟ <span>+</span></div>
+            <div class="answer">● Device Group: للـ Policies.
+● Template: للـ Network & Interface Settings.</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">33) Commit vs Push؟ <span>+</span></div>
-            <div class="answer"><b>Commit:</b> حفظ التغييرات على الجهاز المحلي.<br><b>Push:</b> إرسال الإعدادات من Panorama للأجهزة البعيدة.</div>
+            <div class="answer">● Commit: حفظ التغييرات محلياً.
+● Push: إرسالها من Panorama للأجهزة.</div>
         </div>
         <div class="card">
-            <div class="question" onclick="toggle(this)">34) ما هو الـ High Availability (HA)؟ <span>+</span></div>
-            <div class="answer">ربط جهازين Firewall معاً لزيادة التوافر وتجنب انقطاع الخدمة.</div>
+            <div class="question" onclick="toggle(this)">34) ما هو High Availability (HA)؟ <span>+</span></div>
+            <div class="answer">ربط جهازين Firewall لزيادة التوافر.</div>
         </div>
         <div class="card">
-            <div class="question" onclick="toggle(this)">35) Active/Passive vs Active/Active؟ <span>+</span></div>
-            <div class="answer"><b>Active/Passive:</b> واحد شغال والتاني Standby (الأكثر استخداماً).<br><b>Active/Active:</b> الاثنين شغالين في نفس الوقت.</div>
+            <div class="question" onclick="toggle(this)">35) Active/Active vs Active/Passive؟ <span>+</span></div>
+            <div class="answer">● Active/Passive: واحد شغال والتاني Standby (الأكثر استخداماً).
+● Active/Active: الاثنين شغالين.</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">36) ما هي الـ HA Interfaces؟ <span>+</span></div>
-            <div class="answer"><b>HA1:</b> Control Link. <br><b>HA2:</b> Session Sync. <br><b>HA3:</b> Packet Forwarding (في حالة A/A).</div>
+            <div class="answer">● HA1: Control Link
+● HA2: Session Sync
+● HA3: Packet Forwarding (A/A)</div>
         </div>
         <div class="card">
-            <div class="question" onclick="toggle(this)">37) كيف يتم الـ Synchronization في الـ HA؟ <span>+</span></div>
-            <div class="answer">Sync Config, Sync Session Table, و Heartbeat Monitoring للتأكد من حالة الجهاز الآخر.</div>
+            <div class="question" onclick="toggle(this)">37) كيف يتم الـ Synchronization؟ <span>+</span></div>
+            <div class="answer">Sync Config, Sync Session Table, Heartbeat Monitoring.</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">38) خطوات الـ Troubleshooting لو الترافيك مش بيمر؟ <span>+</span></div>
-            <div class="answer">1. Check Interface Up/Down<br>2. Check Zones<br>3. Check NAT<br>4. Check Security Policy<br>5. Check Routing<br>6. Check Logs.</div>
+            <div class="answer">1. Check Interface Up/Down
+2. Check Zones
+3. Check NAT
+4. Check Security Policy
+5. Check Routing
+6. Check Logs</div>
         </div>
         <div class="card">
             <div class="question" onclick="toggle(this)">39) أهم أوامر الـ CLI؟ <span>+</span></div>
-            <div class="answer">
-                <code class="code-block">
-                    show session all<br>
-                    show routing route<br>
-                    show interface all<br>
-                    test security-policy-match
-                </code>
-            </div>
+            <div class="answer"><code class="code-block">show session all
+show session id &lt;id&gt;
+show routing route
+show interface all
+show log traffic
+test security-policy-match</code></div>
         </div>
         <div class="card">
-            <div class="question" onclick="toggle(this)">40) كيف تتبع Session معينة؟ <span>+</span></div>
-            <div class="answer">1. هات الـ Session ID من Traffic Logs. <br>2. استخدم الأمر: <br><code class="code-block">show session id <session-id></code></div>
+            <div class="question" onclick="toggle(this)">40) تتبع Session معينة؟ <span>+</span></div>
+            <div class="answer">1. هات Session ID من Traffic Logs.
+2. CLI:
+<code class="code-block">show session id &lt;session-id&gt;</code>
+3. لو لزم الأمر Packet Capture.</div>
         </div>
     </section>
 </div>
 
-    <footer>
-    <h3>تواصل معي / Connect with me</h3>
+<footer>
+    <h3>تواصل معي | Connect With Me</h3>
     <div class="social-links">
         <a href="https://www.linkedin.com/in/yossefibrahim2001/" target="_blank" class="social-btn linkedin">
-            <i class="fab fa-linkedin-in"></i> LinkedIn
+            <i class="fab fa-linkedin"></i> LinkedIn
         </a>
         <a href="https://github.com/yossefibrahimmohamed" target="_blank" class="social-btn github">
             <i class="fab fa-github"></i> GitHub
@@ -364,11 +422,10 @@
             <i class="fab fa-youtube"></i> YouTube
         </a>
     </div>
-    <p style="margin-top: 20px; font-size: 0.8rem; color: #666;">&copy; 2024 - تم التطوير للمساعدة في التحضير للمقابلات</p>
+    <p style="margin-top: 25px; color: #555; font-size: 0.9rem;">&copy; 2024 جميع الحقوق محفوظة | رمضان كريم 🕌🌙</p>
 </footer>
-    
+
 <script>
-    // Tab Switching
     const tabs = document.querySelectorAll('.tab-btn');
     const sections = document.querySelectorAll('.level-section');
 
@@ -381,14 +438,10 @@
         });
     });
 
-    // Toggle Answer
     function toggle(element) {
         const answer = element.nextElementSibling;
         const icon = element.querySelector('span');
         const isVisible = answer.classList.contains('show');
-
-        // Close other answers in the same section for cleaner look (optional)
-        // document.querySelectorAll('.answer').forEach(a => a.classList.remove('show'));
 
         if(isVisible) {
             answer.classList.remove('show');
@@ -399,7 +452,6 @@
         }
     }
 
-    // Search Logic
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase();
@@ -414,4 +466,3 @@
 
 </body>
 </html>
-
