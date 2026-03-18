@@ -20,7 +20,7 @@ A comprehensive, interactive web-based guide for Network Security Engineers prep
 3. Use the search bar to filter for specific technical terms.
 
 ## 🔗 Live Demo
-[Check out the live site here!](INSERT_YOUR_GITHUB_PAGES_LINK_HERE)
+[Check out the live site here!](https://yossefibrahimmohamed.github.io/Interview-Questions-PaloAlto/)
 
 ---
 *Created to help the community ace their technical interviews.*
